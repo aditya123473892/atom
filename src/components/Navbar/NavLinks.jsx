@@ -11,13 +11,22 @@ const NavLinks = () => {
         <div>
           <div className="px-3 py-5 text-left md:cursor-pointer group">
             <h1
-              className=" flex justify-between items-center md:pr-0 pr-5 group hover:text-white hover:border-b-2 hover:border-white"
+              className=" flex justify-between items-center md:pr-0 pr-5 group hover:text-white md:hover:border-b-2 md:hover:border-white font-semibold text-base/loose md:text-base"
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
               }}
             >
               <Link to={link.path}> {link.name}</Link>
+              {link.sublinks && (
+                <span className="text-xl md:hidden inline">
+                  <ion-icon
+                    name={`${
+                      heading === link.name ? "chevron-up" : "chevron-down"
+                    }`}
+                  ></ion-icon>
+                </span>
+              )}
             </h1>
             {link.submenu && (
               <div>
@@ -28,7 +37,7 @@ const NavLinks = () => {
                     mt-1 bg-black rotate-45"
                     ></div>
                   </div>
-                  <div className="bg-black p-5 px-80 grid grid-cols-3 gap-10">
+                  <div className="bg-black p-5 lg:px-60 xl:px-100 px-40 grid grid-cols-2 gap-10">
                     {link.sublinks?.map((mysublinks) => (
                       <div>
                         <h1 className="text-lg  font-semibold">
@@ -67,7 +76,7 @@ const NavLinks = () => {
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
-                    className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-between items-center md:pr-0 pr-5"
+                    className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-between items-center "
                   >
                     {slinks.Head}
 
@@ -87,8 +96,8 @@ const NavLinks = () => {
                     }`}
                   >
                     {slinks.sublink.map((slink) => (
-                      <li className="py-3 pl-14">
-                        <Link to={slink.link}>{slink.name}</Link>
+                      <li className="py-3 pl-14 text-white font-light">
+                        <Link className="hover:text-amber-700" to={slink.link}>{slink.name}</Link>
                       </li>
                     ))}
                   </div>
