@@ -18,7 +18,7 @@ export const Home = () => {
       <Collections/>
       <Categories/>
       <Testimonials/>
-      <Footer/>
+      
 
       
     </>

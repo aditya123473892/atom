@@ -11,7 +11,7 @@ export const POLICIES = [
 export const MORE = [
  
   { name: "About Us", url: "#" },
-  { name: "Contact Us", url: "contactus" },
+  { name: "Contact Us", url: "/contactus" },
   { name: "Join Us", url: "#" },
   { name: "Help & Support", url: "#" },
 ];
