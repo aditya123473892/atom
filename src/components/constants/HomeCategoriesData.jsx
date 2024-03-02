@@ -1,7 +1,7 @@
 import tshirt from "../../assets/tshirt.jpg";
-import jackets from "../../assets/jackets.jpg";
-import sneakers from "../../assets/sneakers.jpg";
-import shades from "../../assets/shades.jpg";
+// import jackets from "../../assets/jackets.jpg";
+// import sneakers from "../../assets/sneakers.jpg";
+// import shades from "../../assets/shades.jpg";
 import cargos from "../../assets/cargos.jpg";
 import croptop from "../../assets/croptop.jpg"
 
