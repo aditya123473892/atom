@@ -10,14 +10,8 @@ const NavLinks = () => {
       {links.map((link) => (
         <div>
           <div className="px-3 py-5 text-left md:cursor-pointer group">
-            <h1
-              className=" flex justify-between items-center md:pr-0 pr-5 group hover:text-white md:hover:border-b-2 md:hover:border-white font-semibold text-base/loose md:text-base"
-              onClick={() => {
-                heading !== link.name ? setHeading(link.name) : setHeading("");
-                setSubHeading("");
-              }}
-            >
-              <Link to={link.path}> {link.name}</Link>
+            <div className="flex justify-between items-center md:pr-0 pr-5 group hover:text-white font-semibold text-base/loose md:text-base relative">
+              <Link to={link.path}>{link.name}</Link>
               {link.sublinks && (
                 <span className="text-xl md:hidden inline">
                   <ion-icon
@@ -27,7 +21,14 @@ const NavLinks = () => {
                   ></ion-icon>
                 </span>
               )}
-            </h1>
+              <div
+                className="absolute bottom-0 left-0 w-full h-[2px] bg-transparent group-hover:bg-white"
+                onClick={() => {
+                  heading !== link.name ? setHeading(link.name) : setHeading("");
+                  setSubHeading("");
+                }}
+              ></div>
+            </div>
             {link.submenu && (
               <div>
                 <div className="absolute top-10 inset-x-0 hidden group-hover:md:block hover:md:block z-50">
@@ -97,7 +98,9 @@ const NavLinks = () => {
                   >
                     {slinks.sublink.map((slink) => (
                       <li className="py-3 pl-14 text-white font-light">
-                        <Link className="hover:text-amber-700" to={slink.link}>{slink.name}</Link>
+                        <Link className="hover:text-amber-700" to={slink.link}>
+                          {slink.name}
+                        </Link>
                       </li>
                     ))}
                   </div>
