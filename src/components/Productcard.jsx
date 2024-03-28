@@ -1,8 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div
+      className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
+      onClick={handleClick}
+    >
+      <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="relative pt-[100%]">
         <img
           src={product.image}
@@ -20,6 +31,7 @@ const ProductCard = ({ product }) => {
           Add to Cart
         </button>
       </div>
+    </div>
     </div>
   );
 };

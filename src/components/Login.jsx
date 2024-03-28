@@ -4,14 +4,14 @@ import Background from "../background"
 
 const LoginPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-end bg-cover bg-center">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center">
       <Background />
       <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full m-8">
         <div className="flex justify-center mb-8">
           <img src={icon} alt="Company Icon" className="w-33 h-24" />
         </div>
         <h2 className="text-3xl font-bold mb-6 text-center">Welcome Back</h2>
-        <form>
+        <form className="w-full">
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
               Email
