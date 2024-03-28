@@ -1,18 +1,18 @@
 import React from 'react';
 import icon from '../assets/i.png';
-import Background from "../background"
+import Background from "../background";
 
 const SignupPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-end bg-cover bg-center">
-        <Background />
+    <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center">
+      <Background />
       {/* Signup form container */}
       <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full m-8">
         <div className="flex justify-center mb-8">
           <img src={icon} alt="Company Icon" className="w-33 h-24" />
         </div>
         <h2 className="text-3xl font-bold mb-6 text-center">Create an Account</h2>
-        <form>
+        <form className="w-full">
           <div className="mb-4">
             <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
               Full Name
