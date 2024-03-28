@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProductCard from './Productcard';
 
 // Dummy product data
 const products = [
@@ -6,7 +7,6 @@ const products = [
   { id: 2, name: 'Blue T-Shirt', category: 'tshirt', price: 1599, image: 'https://i5.walmartimages.com/asr/3c92c819-468f-4edd-8098-551a16ea9f1c.a8809b55a1038c8f51139443cd9e92db.jpeg' },
   { id: 3, name: 'Printed T-Shirt', category: 'tshirt', price: 2499, image: 'https://simpleteeshops.com/wp-content/uploads/2020/02/Graphic-Printed-T-Shirt-for-Men-USA-Flag-T-Shirt.jpg' },
   { id: 4, name: 'red T-Shirt', category: 'jeans', price: 2999, image: 'https://fullsourcemedia.s3.amazonaws.com/images/items/b/raw/5000_Red_1_A.jpg' },
-
 ];
 
 const ExploreSection = () => {
@@ -82,28 +82,7 @@ const ExploreSection = () => {
         {searchResults.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {searchResults.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
-              >
-                <div className="relative pt-[100%]">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-2">Category: {product.category}</p>
-                  <p className="text-gray-900 font-bold mb-4">
-                    Price: ₹{product.price.toLocaleString('en-IN')}
-                  </p>
-                  <button className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         ) : searchTerm ? (
