@@ -3,6 +3,8 @@ import icon from "../assets/i.png";
 import Background from "../background";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 const SignupPage = () => {
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -143,12 +145,12 @@ const SignupPage = () => {
         {/* Sign in link */}
         <p className="mt-8 text-center text-gray-700 font-medium">
           Already have an account?{" "}
-          <a
-            href="/login"
+          <Link 
+            to="/login"
             className="text-blue-500 hover:text-blue-700 font-medium"
           >
             Sign in
-          </a>
+          </Link>
         </p>
       </div>
     </div>

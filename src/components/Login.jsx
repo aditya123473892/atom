@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import icon from "../assets/i.png";
 import Background from "../background";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const LoginPage = () => {
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -109,12 +110,12 @@ const LoginPage = () => {
         {/* Sign up link */}
         <p className="mt-8 text-center text-gray-700 font-medium">
           Don't have an account?{" "}
-          <a
-            href="/signup"
+          <Link
+            to="/signup"
             className="text-blue-500 hover:text-blue-700 font-medium"
           >
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
