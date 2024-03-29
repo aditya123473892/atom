@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import icon from '../../assets/atom.png';
-
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <nav className="bg-black flex justify-between px-8 sticky top-0 z-50 py-2 md:py-0">
       <div className="flex items-center">
-        <a href='/'>
+        <Link to='/'>
           <img src={icon} alt="Company Icon" className="h-26 w-20 mr-9" />
-        </a>
+        </Link>
       </div>
       <div className="flex items-center font-medium justify-center flex-grow">
         <ul className="md:flex hidden uppercase text-white items-center gap-10 font-[Poppins]">
