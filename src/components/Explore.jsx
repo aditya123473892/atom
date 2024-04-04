@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import ProductCard from './Productcard';
 
 // Dummy product data
@@ -42,12 +43,25 @@ const ExploreSection = () => {
     handleSearch();
   };
 
+
   return (
     <div className="bg-gray-100 min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-center mb-8">Explore Our Products</h1>
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold text-center mb-8"
+        >
+          Explore Our Products
+        </motion.h1>
         <div className="mb-8">
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="relative"
+          >
             <input
               type="text"
               value={searchTerm}
@@ -57,7 +71,12 @@ const ExploreSection = () => {
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {suggestions.length > 0 && (
-              <ul className="absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-md">
+              <motion.ul
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-md"
+              >
                 {suggestions.map((suggestion) => (
                   <li
                     key={suggestion.id}
@@ -67,30 +86,49 @@ const ExploreSection = () => {
                     {suggestion.name}
                   </li>
                 ))}
-              </ul>
+              </motion.ul>
             )}
-          </div>
+          </motion.div>
         </div>
         <div className="flex justify-center mb-8">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleSearch}
             className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             Search
-          </button>
+          </motion.button>
         </div>
         {searchResults.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          >
             {searchResults.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
-          </div>
+          </motion.div>
         ) : searchTerm ? (
-          <p className="text-center text-gray-600 text-xl">No products found.</p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="text-center text-gray-600 text-xl"
+          >
+            No products found.
+          </motion.p>
         ) : (
-          <p className="text-center text-gray-600 text-xl">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="text-center text-gray-600 text-xl"
+          >
             Start exploring by searching for a product.
-          </p>
+          </motion.p>
         )}
       </div>
     </div>
