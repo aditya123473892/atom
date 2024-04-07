@@ -38,7 +38,7 @@ const Navbar = () => {
       <motion.div
         initial={false}
         animate={isOpen ? "open" : "closed"}
-        className="text-3xl md:text-2xl text-white"
+        className="text-3xl cursor-pointer md:text-2xl text-white"
         onClick={cycleOpen}
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.8 }}
@@ -79,7 +79,7 @@ const Navbar = () => {
         initial={false}
         animate={isOpen ? "open" : "closed"}
         variants={sideVariants}
-        className={`md:hidden bg-black text-white fixed w-full top-16 left-0 overflow-y-auto bottom-0 py-6 pl-4 ${
+        className={`bg-black text-white fixed w-full top-16 md:top-[5rem] left-0 overflow-y-auto bottom-0 py-6 pl-4 ${
           isOpen ? "block" : "hidden"
         }`}
       >
@@ -91,7 +91,7 @@ const Navbar = () => {
             onClick={cycleOpen}
             whileHover={{ x: 10 }}
           >
-            <Link to={to} className="text-xl md:text-base uppercase">
+            <Link to={to} className="text-xl uppercase">
               {name}
             </Link>
           </motion.li>
