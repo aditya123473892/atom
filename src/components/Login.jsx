@@ -30,7 +30,7 @@ const LoginPage = () => {
     } catch (error) {
       console.log(error);
     }
-    // setInputValue({ ...inputValue, email: "", password: "" });
+    setInputValue({ ...inputValue, email: "", password: "" });
   };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center">
