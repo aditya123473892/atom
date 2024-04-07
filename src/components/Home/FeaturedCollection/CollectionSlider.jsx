@@ -7,25 +7,25 @@ import { FreeMode, Pagination } from "swiper/modules";
 import { useState } from "react";
 
 const CollectionSlider = () => {
-  const [modal, setModal] = useState(false);
-  const [modalData, setModalData] = useState({
-    title: "",
-    image: "",
-    description: "",
-    price: "",
-  });
-  const toggleModal = (item) => {
-    setModal(true);
-    setModalData({
-      title: item.title,
-      image: item.image,
-      description: item.description,
-      price: item.price,
-    });
-  };
+  // const [modal, setModal] = useState(false);
+  // const [modalData, setModalData] = useState({
+  //   title: "",
+  //   image: "",
+  //   description: "",
+  //   price: "",
+  // });
+  // const toggleModal = (item) => {
+  //   setModal(true);
+  //   setModalData({
+  //     title: item.title,
+  //     image: item.image,
+  //     description: item.description,
+  //     price: item.price,
+  //   });
+  // };
   return (
     <div className="flex py-4 relative">
-      {modal && (
+      {/* {modal && (
         <div onClick={()=>setModal(!modal)} className="flex w-72 sm:w-96 gap-4 absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 bg-black p-2 sm:p-3 z-50  left-50 rounded">
           <div className="w-44 h-44">
             <img
@@ -40,7 +40,7 @@ const CollectionSlider = () => {
             <p className="font-medium text-lg text-amber-700">Rs. {modalData.price}</p>
           </div>
         </div>
-      )}
+      )} */}
       <Swiper
         breakpoints={{
           500: {
