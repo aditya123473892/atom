@@ -2,9 +2,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { collectionData } from "../../constants/HomeCollectionData";
 import "swiper/css/pagination";
+import 'swiper/css/navigation';
 import "swiper/css/free-mode";
-import { FreeMode, Pagination } from "swiper/modules";
-import { useState } from "react";
+// import { Navigation } from "swiper"
+import { FreeMode, Pagination, Navigation } from "swiper/modules";
+// import { useState } from "react";
 
 const CollectionSlider = () => {
   // const [modal, setModal] = useState(false);
@@ -54,10 +56,11 @@ const CollectionSlider = () => {
           },
         }}
         freeMode={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[FreeMode, Pagination]}
+        navigation={true}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        modules={[FreeMode,Navigation]}
         className="max-w-[90%] lg:max-w-[90%]"
       >
         {collectionData.map((item) => (

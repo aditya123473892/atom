@@ -36,3 +36,13 @@
     background-color: black; 
     transition: transform 0.3s ease;
 }
+:root {
+    --swiper-theme-color: #000;
+    --swiper-navigation-size:1.2rem;
+    --swiper-navigation-font-weight:'bold';
+}
+.swiper-button-next,.swiper-button-prev{
+    margin: -40px 0;
+    font-weight: bolder;
+}
+
