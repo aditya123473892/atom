@@ -5,9 +5,9 @@ import icon from '../../assets/atom.png';
 import { FaUser, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 
 const links = [
-  { name: "Men", to: "/men" },
-  { name: "Women", to: "/women" },
-  { name: "Contact Us", to: "/contact" },
+  { name: "About Us", to: "/aboutus" },
+  { name: "Privacy Policy", to: "/privacypolicy" },
+  { name: "Join Us", to: "/joinus" },
 ];
 
 const itemVariants = {

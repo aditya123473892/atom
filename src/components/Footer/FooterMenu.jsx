@@ -4,21 +4,21 @@ export const SHOP = [
   { name: "ACCESSORIES", url: "#" },
 ];
 export const POLICIES = [
-  { name: "Terms & Conditions", url: "#" },
-  { name: "Privacy Policy", url: "#" },
-  { name: "Code of Conduct", url: "#" },
+  { name: "Terms & Conditions", url: "/T&C" },
+  { name: "Privacy Policy", url: "/privacypolicy" },
+  { name: "Code of Conduct", url: "codeofconduct" },
 ];
 export const MORE = [
  
-  { name: "About Us", url: "#" },
+  { name: "About Us", url: "/aboutus" },
   { name: "Contact Us", url: "/contactus" },
-  { name: "Join Us", url: "#" },
-  { name: "Help & Support", url: "#" },
+  { name: "Join Us", url: "/joinus" },
+  //{ name: "Help & Support", url: "help&support" },
 ];
 
 export const Icons = [
-  { name: "logo-facebook", url: "#" },
-  { name: "logo-twitter", url: "#" },
-  { name: "logo-linkedin", url: "#" },
-  { name: "logo-instagram", url: "#" },
+  //{ name: "logo-facebook", url: "https://google.com" },
+  //{ name: "logo-twitter", url: "#" },
+  { name: "logo-linkedin", url: "https://www.linkedin.com/company/atomcreations/" },
+  { name: "logo-instagram", url: "https://www.instagram.com/atomcreations.co?igsh=MWZvZHk4aXlodWUybw==" },
 ];

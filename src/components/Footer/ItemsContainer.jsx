@@ -5,8 +5,7 @@ import { Icons } from "./FooterMenu";
 
 const ItemsContainer = () => {
   return (
-    <div className="grid uppercase grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:px-24 px-5 py-16">
-      <Item Links={SHOP} title="SHOP" />
+    <div className="grid uppercase grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:px-24 px-5 py-16">
       <Item Links={POLICIES} title="POLICIES" />
       <Item Links={MORE} title="MORE" />
       <div>
