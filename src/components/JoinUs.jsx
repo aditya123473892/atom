@@ -10,7 +10,7 @@ const JoinUs = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl font-extrabold text-left mb-8" // Aligning to the left
+          className="text-4xl font-extrabold text-left mb-8"
         >
           Join Our Community
         </motion.h1>
@@ -26,17 +26,19 @@ const JoinUs = () => {
               Join our vibrant community of fashion enthusiasts and be the first to know about new arrivals, exclusive promotions, and insider tips. By signing up for our newsletter, you'll gain access to a world of style inspiration and special perks.
             </p>
             <form className="mt-6">
-              <div className="flex items-center">
-                <FaEnvelope className="text-indigo-600 mr-2" />
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="bg-gray-800 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 flex-grow"
-                  required
-                />
+              <div className="flex flex-col md:flex-row items-center">
+                <div className="flex items-center w-full mb-4 md:mb-0 md:w-auto">
+                  <FaEnvelope className="text-indigo-600 mr-2" />
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="bg-gray-800 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 flex-grow"
+                    required
+                  />
+                </div>
                 <button
                   type="submit"
-                  className="bg-indigo-600 text-white rounded-lg py-2 px-4 ml-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                  className="bg-indigo-600 text-white rounded-lg py-2 px-4 mt-2 md:mt-0 md:ml-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 w-full md:w-auto"
                 >
                   Subscribe
                 </button>
