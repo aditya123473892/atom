@@ -47,11 +47,10 @@ const Navbar = () => {
       </motion.div>
       <div className="flex items-center justify-center flex-grow">
         <Link to='/'>
-          <motion.img
+          <img
             src={icon}
             alt="Company Icon"
             className="h-14 w-auto"
-            whileHover={{ rotate: 180, transition: { duration: 0.5 } }}
           />
         </Link>
       </div>

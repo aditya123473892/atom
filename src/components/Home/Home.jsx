@@ -15,7 +15,6 @@ export const Home = () => {
       </section>
       <Collections />
       <Categories />
-      <Testimonials />
     </>
   );
 };

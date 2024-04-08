@@ -1,4 +1,3 @@
-// Cart.js
 import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
 import { FaTrash, FaMinus, FaPlus } from 'react-icons/fa';
@@ -25,72 +24,77 @@ const Cart = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">My Cart</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <div className="bg-white shadow-md rounded-lg p-4 mb-4 h-[400px] overflow-y-auto">
-            {cartItems.length === 0 ? (
-              <p className="text-gray-500">Your cart is empty.</p>
-            ) : (
-              cartItems.map((item) => (
-                <div key={item.id} className="flex items-center mb-4">
-                  <img src={item.image} alt={item.name} className="w-20 h-20 object-cover mr-4" />
-                  <div>
-                    <h2 className="text-lg font-semibold">{item.name}</h2>
-                    <p className="text-gray-500">Price: ₹ {item.price}</p>
-                    <div className="flex items-center mt-2">
+    <div className="min-h-screen bg-black text-white py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-4xl font-extrabold text-center mb-8">My Cart</h1>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-8">
+            <div className="bg-gray-900 rounded-lg p-6 mb-8 shadow-2xl">
+              {cartItems.length === 0 ? (
+                <p className="text-gray-400 text-center">Your cart is empty.</p>
+              ) : (
+                cartItems.map((item) => (
+                  <div key={item.id} className="flex items-center mb-8">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-32 h-32 object-cover rounded-lg shadow-lg mr-6"
+                    />
+                    <div>
+                      <h2 className="text-xl font-semibold">{item.name}</h2>
+                      <p className="text-gray-400">Price: ₹ {item.price}</p>
+                      <div className="flex items-center mt-2">
+                        <button
+                          className="text-gray-400 hover:text-gray-200 focus:outline-none"
+                          onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
+                        >
+                          <FaMinus className="w-4 h-4" />
+                        </button>
+                        <span className="mx-2 text-lg">{item.quantity}</span>
+                        <button
+                          className="text-gray-400 hover:text-gray-200 focus:outline-none"
+                          onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
+                        >
+                          <FaPlus className="w-4 h-4" />
+                        </button>
+                      </div>
                       <button
-                        className="text-gray-500 hover:text-gray-700 focus:outline-none"
-                        onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
+                        className="text-red-600 hover:text-red-800 mt-2 focus:outline-none"
+                        onClick={() => removeFromCart(item.id)}
                       >
-                        <FaMinus />
-                      </button>
-                      <span className="mx-2">{item.quantity}</span>
-                      <button
-                        className="text-gray-500 hover:text-gray-700 focus:outline-none"
-                        onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                      >
-                        <FaPlus />
+                        Remove
                       </button>
                     </div>
-                    <button
-                      className="text-red-500 hover:text-red-700 mt-2 focus:outline-none"
-                      onClick={() => removeFromCart(item.id)}
-                    >
-                      Remove
-                    </button>
                   </div>
-                </div>
-              ))
-            )}
+                ))
+              )}
+            </div>
           </div>
-        </div>
-        <div>
-          <div className="bg-white shadow-md rounded-lg p-4 sticky top-4">
-            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
-            <div className="flex justify-between mb-2">
-              <p>Subtotal:</p>
-              <p>₹{calculateSubtotal().toFixed(2)}</p>
+          <div className="lg:col-span-4">
+            <div className="bg-gray-900 rounded-lg p-6 sticky top-8 shadow-2xl">
+              <h2 className="text-2xl font-semibold mb-4">Order Summary</h2>
+              <div className="flex justify-between mb-2">
+                <p className="text-lg">Subtotal:</p>
+                <p className="text-lg">₹{calculateSubtotal().toFixed(2)}</p>
+              </div>
+              <div className="flex justify-between mb-2">
+                <p className="text-lg">Shipping:</p>
+                <p className="text-lg">₹5.00</p>
+              </div>
+              <div className="flex justify-between font-semibold text-xl mt-4">
+                <p>Total:</p>
+                <p>₹{calculateTotal().toFixed(2)}</p>
+              </div>
+              <button className="bg-indigo-600 text-white rounded-lg py-3 px-6 mt-6 w-full focus:outline-none hover:bg-indigo-700 transition duration-200 shadow-lg">
+                Proceed to Checkout
+              </button>
+              <button
+                className="flex items-center justify-center bg-red-600 text-white rounded-lg py-3 px-6 mt-4 w-full hover:bg-red-700 focus:outline-none transition duration-200 shadow-lg"
+                onClick={clearCart}
+              >
+                <FaTrash className="mr-2 w-4 h-4" /> Clear Cart
+              </button>
             </div>
-            <div className="flex justify-between mb-2">
-              <p>Shipping:</p>
-              <p>₹5.00</p>
-            </div>
-            <div className="flex justify-between font-semibold">
-              <p>Total:</p>
-              <p>₹{calculateTotal().toFixed(2)}</p>
-            </div>
-            <button className="bg-black text-white rounded-lg py-2 px-4 mt-4 w-full focus:outline-none">
-              Proceed to Checkout
-            </button>
-            <button
-              className="flex items-center justify-center bg-red-500 text-white rounded-lg py-2 px-4 mt-4 w-full hover:bg-red-600 focus:outline-none"
-              onClick={clearCart}
-            >
-              <FaTrash className="mr-2" />
-              Clear Cart
-            </button>
           </div>
         </div>
       </div>
