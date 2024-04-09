@@ -4,6 +4,8 @@ import Button from "./Button";
 import Collections from "./FeaturedCollection/Collections";
 import Categories from "./CategoriesSection/Categories";
 import Testimonials from "./TestimonialsSection/Testimonials";
+import FeaturedProducts from "./FeaturedProducts"
+import Offer from "./Offer"
 
 export const Home = () => {
   return (
@@ -13,6 +15,9 @@ export const Home = () => {
           <Button name="EXPLORE" />
         </Link>
       </section>
+      <FeaturedProducts />
+      <Collections />
+      <Offer />
       <Collections />
       <Categories />
     </>
