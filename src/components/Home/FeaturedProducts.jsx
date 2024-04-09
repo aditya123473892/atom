@@ -9,8 +9,9 @@ const FeaturedProducts = () => {
   return (
     <section className="container mx-auto px-4 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="flex md:flex-col">
-          <div className="flex-1 relative mb-8">
+        <div className="md:flex md:flex-col">
+          {/* Show feature1 image */}
+          <div className="relative mb-8">
             <div className="h-full">
               <img
                 src={feature1}
@@ -24,7 +25,8 @@ const FeaturedProducts = () => {
               </button>
             </div>
           </div>
-          <div className="flex-1 relative">
+          {/* Show feature2 image */}
+          <div className="relative mb-8">
             <div className="h-full">
               <img
                 src={feature2}
@@ -39,6 +41,7 @@ const FeaturedProducts = () => {
             </div>
           </div>
         </div>
+        {/* Show feature3 image */}
         <div className="relative">
           <img
             src={feature3}
