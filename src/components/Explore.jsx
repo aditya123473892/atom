@@ -58,11 +58,12 @@ const ExploreSection = () => {
 
     const handleSearchChange = (e) => {
         const term = e.target.value;
-        setSearchTerm(term);
-
+        setSearchTerm([]);
+        console.log(searchTerm);
         if (term.trim() !== "") {
             const filteredSuggestions = items.filter((product) => {
                 console.log(product.title);
+                console.log(product._id);
                 return product.title.toLowerCase().includes(term.toLowerCase());
             });
             setSuggestions(filteredSuggestions);
@@ -82,7 +83,7 @@ const ExploreSection = () => {
     };
 
     const handleSuggestionClick = (suggestion) => {
-        setSearchTerm(suggestion.name);
+        setSearchTerm(suggestion.title);
         setSuggestions([]);
         handleSearch();
     };
@@ -124,13 +125,13 @@ const ExploreSection = () => {
                             >
                                 {suggestions.map((suggestion) => (
                                     <li
-                                        key={suggestion.id}
+                                        key={suggestion._id}
                                         className="px-4 py-2 cursor-pointer hover:bg-gray-100"
                                         onClick={() =>
                                             handleSuggestionClick(suggestion)
                                         }
                                     >
-                                        {suggestion.name}
+                                        {suggestion.title}
                                     </li>
                                 ))}
                             </motion.ul>
@@ -155,7 +156,7 @@ const ExploreSection = () => {
                         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
                     >
                         {searchResults.map((product) => (
-                            <ProductCard key={product.id} product={product} />
+                            <ProductCard key={product._id} product={product} />
                         ))}
                     </motion.div>
                 ) : searchTerm ? (

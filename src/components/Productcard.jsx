@@ -9,13 +9,13 @@ const ProductCard = ({ product }) => {
     const [isAdded, setIsAdded] = useState(false);
 
     const handleClick = () => {
-        navigate(`/product/${product.id}`);
+        navigate(`/product/${product._id}`);
     };
 
     const handleAddToCart = (event) => {
         event.stopPropagation();
         const cartItem = {
-            id: product.id,
+            id: product._id,
             title: product.title,
             price: product.price,
             image: product.image,
