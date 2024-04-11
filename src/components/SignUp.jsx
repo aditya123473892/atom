@@ -4,7 +4,8 @@ import Background from "../background";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignupPage = () => {
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -26,25 +27,46 @@ const SignupPage = () => {
     e.preventDefault();
 
     const { name, email, password, mobile } = inputValue;
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/user/register",
-        {
-          name,
-          email,
-          password,
-          mobile,
-        }
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error);
+    if (name === "" || email === "" || password === "" || mobile === "") {
+      toast.warning("All fields are required!", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+    } else if (!email.includes("@")) {
+      toast.warning("email must include @", {
+        position: "top-center",
+      });
+    } else if (mobile.length < 10) {
+      toast.warning("Mobile must be of 10 digits", {
+        position: "top-center",
+      });
+    } else {
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/api/user/register",
+          {
+            name,
+            email,
+            password,
+            mobile,
+          }
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+      setInputValue({
+        ...inputValue,
+        name: "",
+        email: "",
+        password: "",
+        mobile: "",
+      });
     }
-    setInputValue({ ...inputValue, name: "", email: "", password: "", mobile: "" });
-
   };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center">
+      <ToastContainer />
       <Background />
       {/* Signup form container */}
       <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full m-8">
@@ -145,8 +167,8 @@ const SignupPage = () => {
         {/* Sign in link */}
         <p className="mt-8 text-center text-gray-700 font-medium">
           Already have an account?{" "}
-          <Link 
-            to="/login"
+          <Link
+            to="/profile"
             className="text-blue-500 hover:text-blue-700 font-medium"
           >
             Sign in
