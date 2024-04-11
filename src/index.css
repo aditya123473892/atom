@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'font1';
+    src: url('/src/assets/ArchivoBlack-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'font2';
+    src: url('/src/assets/QanelasSoftDEMO-UltraLight.otf') format('opentype');
+}
 .bg-image{
    
     height: 60vh;
