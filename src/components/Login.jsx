@@ -23,39 +23,22 @@ const LoginPage = () => {
     const userLogin = async (e) => {
         e.preventDefault();
         const { email, password } = inputValue;
-        if (email === "" || password === "") {
-            toast.warning("All fields are required!", {
-                position: "top-center",
-                autoClose: 2000,
-            });
-        } else if (!email.includes("@")) {
-            toast.warning("email must include @", {
-                position: "top-center",
-            });
-        } else {
-            try {
-                const res = await axios.post(
-                    "http://localhost:8080/api/user/login",
-                    {
-                        email,
-                        password,
-                    }
-                );
-                console.log(res);
-            } catch (error) {
-                console.log(error);
-                toast.error("Incorrect email or password", {
-                    position: "top-center",
-                    autoClose: 3000,
-                });
-            }
-            setInputValue({ ...inputValue, email: "", password: "" });
+        try {
+            const res = await axios.post(
+                "http://localhost:8080/api/user/login",
+                {
+                    email,
+                    password,
+                }
+            );
+            console.log(res);
+        } catch (error) {
+            console.log(error);
         }
+        setInputValue({ ...inputValue, email: "", password: "" });
     };
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center">
-            <ToastContainer />
-
             <Background />
             <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full m-8">
                 <div className="flex justify-center mb-8">
