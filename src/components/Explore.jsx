@@ -58,7 +58,7 @@ const ExploreSection = () => {
 
     const handleSearchChange = (e) => {
         const term = e.target.value;
-        setSearchTerm([]);
+        setSearchTerm(term);
         console.log(searchTerm);
         if (term.trim() !== "") {
             const filteredSuggestions = items.filter((product) => {

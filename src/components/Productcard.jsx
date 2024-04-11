@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
             id: product._id,
             title: product.title,
             price: product.price,
-            image: product.image,
+            image: product.images[0],
             quantity: 1,
         };
         addToCart(cartItem);
