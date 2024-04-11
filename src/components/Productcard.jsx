@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "./CartContext";
 import { FaCheck } from "react-icons/fa";
+import axios from "axios";
 
 const ProductCard = ({ product }) => {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const ProductCard = ({ product }) => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <div className="relative pt-[100%]">
                     <img
-                        src={product.image}
+                        src={product.images[0]}
                         alt={product.title}
                         className="absolute top-0 left-0 w-full h-full object-cover"
                     />
