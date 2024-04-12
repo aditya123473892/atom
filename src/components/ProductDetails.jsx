@@ -11,6 +11,7 @@ import {
 import { CartContext } from "./CartContext";
 import LoadingSpinner from "./LoadingSpinner";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -27,10 +28,16 @@ const ProductDetails = () => {
         const fetchProduct = async () => {
             setIsLoading(true);
             try {
-                const data = await getProductById(id);
-                setProduct(data);
-                setSelectedSize(data.sizes[0]);
-                setSelectedColor(data.colors[0]);
+                // const data = await getProductById(id);
+                const getMyProduct = await axios.get(
+                    `http://localhost:8080/api/products/${id}`
+                );
+                // console.log(getMyProduct.data);
+                setProduct(() => getMyProduct.data);
+                console.log("Product: ", product);
+                console.log(getMyProduct.data);
+                setSelectedSize(data.size[0]);
+                setSelectedColor(getMyProduct.color[0]);
             } catch (error) {
                 console.error("Error fetching product:", error);
             }
@@ -45,17 +52,17 @@ const ProductDetails = () => {
     }
 
     const {
-        name,
+        title,
         producer,
         type,
         price,
         images,
-        sizes,
-        colors,
+        size,
+        color,
         rating,
         reviews,
     } = product;
-
+    console.log(images[0]);
     const handleSizeClick = (size) => {
         setSelectedSize(size);
     };
@@ -85,7 +92,7 @@ const ProductDetails = () => {
             id: product.id,
             title: product.title,
             price: product.price,
-            image: product.images[0],
+            image: product.images,
             size: selectedSize,
             color: selectedColor,
             quantity: 1,
@@ -96,9 +103,9 @@ const ProductDetails = () => {
     const handleBuyNow = () => {
         const cartItem = {
             id: product.id,
-            name: product.name,
+            name: product.title,
             price: product.price,
-            image: product.images[0],
+            image: product.images,
             size: selectedSize,
             color: selectedColor,
             quantity: 1,
@@ -136,7 +143,7 @@ const ProductDetails = () => {
                             </motion.button>
                             <img
                                 src={images[currentImageIndex]}
-                                alt={name}
+                                alt={title}
                                 className="w-full h-auto object-cover rounded-lg shadow-lg"
                             />
                             <motion.button
@@ -186,7 +193,7 @@ const ProductDetails = () => {
                             transition={{ duration: 0.5, delay: 0.4 }}
                             className="text-3xl font-semibold mb-2"
                         >
-                            {name}
+                            {title}
                         </motion.h2>
                         <motion.p
                             initial={{ y: -20, opacity: 0 }}
@@ -232,7 +239,7 @@ const ProductDetails = () => {
                         >
                             <p className="text-gray-600 mb-2">Select Size:</p>
                             <div className="flex flex-wrap">
-                                {sizes.map((size) => (
+                                {size.map((size) => (
                                     <motion.button
                                         key={size}
                                         whileHover={{ scale: 1.1 }}
@@ -257,7 +264,7 @@ const ProductDetails = () => {
                         >
                             <p className="text-gray-600 mb-2">Select Color:</p>
                             <div className="flex items-center">
-                                {colors.map((color) => (
+                                {color.map((color) => (
                                     <motion.div
                                         key={color}
                                         whileHover={{ scale: 1.1 }}

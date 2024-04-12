@@ -7,24 +7,24 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const SignupPage = () => {
-  const [inputValue, setInputValue] = useState({
-    name: "",
-    email: "",
-    password: "",
-    mobile: "",
-  });
-  const setValue = (e) => {
-    const { name, value } = e.target;
-
-    setInputValue(() => {
-      return {
-        ...inputValue,
-        [name]: value,
-      };
+    const [inputValue, setInputValue] = useState({
+        name: "",
+        email: "",
+        password: "",
+        mobile: "",
     });
-  };
-  const addUser = async (e) => {
-    e.preventDefault();
+    const setValue = (e) => {
+        const { name, value } = e.target;
+
+        setInputValue(() => {
+            return {
+                ...inputValue,
+                [name]: value,
+            };
+        });
+    };
+    const addUser = async (e) => {
+        e.preventDefault();
 
     const { name, email, password, mobile } = inputValue;
     if (name === "" || email === "" || password === "" || mobile === "") {

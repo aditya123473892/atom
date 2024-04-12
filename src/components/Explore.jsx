@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ProductCard from "./Productcard";
 import axios from "axios";
-// Dummy product data
 
 let products = [
     {
@@ -74,6 +73,7 @@ const ExploreSection = () => {
 
     const handleSearch = () => {
         const filteredResults = items.filter((product) => {
+            console.log(product.images[1]);
             return product.title
                 .toLowerCase()
                 .includes(searchTerm.toLowerCase());
