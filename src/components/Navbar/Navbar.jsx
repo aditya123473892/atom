@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { motion, useCycle } from 'framer-motion';
-import icon from '../../assets/atom.png';
+import { motion, useCycle } from "framer-motion";
+import icon from "../../assets/atom.png";
 import { FaUser, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+// import { AuthContext } from "../ContextProvider/AuthContext";
 
 const links = [
   { name: "About Us", to: "/aboutus" },
@@ -23,6 +24,7 @@ const sideVariants = {
 const Navbar = () => {
   const [open, cycleOpen] = useCycle(false, true);
   const [isOpen, setIsOpen] = useState(false);
+  // const { logindata, setLoginData } = useContext(AuthContext);
 
   useEffect(() => {
     setIsOpen(open);
@@ -46,24 +48,23 @@ const Navbar = () => {
         {isOpen ? <FaTimes /> : <FaBars />}
       </motion.div>
       <div className="flex items-center justify-center flex-grow">
-        <Link to='/'>
-          <img
-            src={icon}
-            alt="Company Icon"
-            className="h-14 w-auto"
-          />
+        <Link to="/">
+          <img src={icon} alt="Company Icon" className="h-14 w-auto" />
         </Link>
       </div>
       <div className="flex items-center text-white space-x-4">
-        <Link to="/profile" className="relative button-link">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black"
-          >
-            <FaUser className="text-xl" />
-          </motion.div>
-        </Link>
+        
+          <Link to="/profile" className="relative button-link">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black"
+            >
+              <FaUser className="text-xl" />
+            </motion.div>
+          </Link>
+       
+
         <Link to="/cart" className="relative button-link">
           <motion.div
             whileHover={{ scale: 1.1 }}

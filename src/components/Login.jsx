@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import icon from "../assets/i.png";
 import Background from "../background";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import { AuthContext } from "./ContextProvider/AuthContext";
 const LoginPage = () => {
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
   });
+  // const { logindata, setLoginData } = useContext(AuthContext);
+  const navigate = useNavigate();
   const setValue = (e) => {
     const { name, value } = e.target;
 
@@ -38,7 +41,16 @@ const LoginPage = () => {
           email,
           password,
         });
-        console.log(res);
+        console.log(res.data);
+        // setLoginData(res.data)
+        toast.success("Logged In successfully!", {
+          position: "top-center",
+          autoClose: 3000,
+        });
+        
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       } catch (error) {
         console.log(error);
         toast.error("Incorrect email or password", {
