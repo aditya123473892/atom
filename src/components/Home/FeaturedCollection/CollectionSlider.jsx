@@ -52,17 +52,6 @@ const CollectionSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="realtive h-36 w-full bg-black flex items-center justify-center">
-        <div className="font-heading text-white text-4xl flex">
-          Follow us on
-          <a href="https://www.google.com/" className="block h-12 w-12 bg-white flex items-center justify-center rounded-full transition duration-75 mx-8">
-            <FaInstagram className="text-3xl text-black" />
-          </a>
-          <a href="https://www.google.com/" className="block h-12 w-12 bg-white flex items-center justify-center rounded-full transition duration-75">
-            <FaLinkedinIn className="text-3xl text-black" />
-          </a>
-        </div>
-      </div>
     </div>
   );
 };
