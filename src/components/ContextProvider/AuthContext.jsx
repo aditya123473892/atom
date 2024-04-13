@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import axios from "axios";
 import React, { createContext, useState } from "react";
 
@@ -40,22 +39,3 @@ const Context = ({ children }) => {
 };
 
 export default Context;
-=======
-import React, { createContext, useState } from "react";
-
-export const AuthContext = createContext("");
-
-const AuthContextProvider = ({ children }) => {
-  const [loginData, setLoginData] = useState("");
-
-  return (
-    <>
-      <AuthContext.Provider value={{ loginData, setLoginData }}>
-        {children}
-      </AuthContext.Provider>
-    </>
-  );
-};
-
-export default AuthContextProvider;
->>>>>>> e257215d4da4478a044b62ff3df82bafffda81ca
