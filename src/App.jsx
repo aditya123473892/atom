@@ -19,7 +19,7 @@ import HelpSupport from "./components/HelpSupport";
 import TermsCondition from "./components/TermsCondition";
 import CodeofConduct from "./components/CodeofConduct";
 import { AuthContext } from "./components/ContextProvider/AuthContext";
-
+import { AuthProvider } from "./components/ContextProvider/AuthContext";
 const ScrollToTop = () => {
     const { pathname } = useLocation();
 
@@ -32,7 +32,7 @@ const ScrollToTop = () => {
 
 const App = () => {
     return (
-        <AuthContext>
+        <AuthProvider>
             <CartProvider>
                 <Navbar />
                 <ScrollToTop />
@@ -54,7 +54,7 @@ const App = () => {
                 </Routes>
                 <Footer />
             </CartProvider>
-        </AuthContext>
+        </AuthProvider>
     );
 };
 
