@@ -35,9 +35,10 @@ const ProductDetails = () => {
                 // console.log(getMyProduct.data);
                 setProduct(() => getMyProduct.data);
                 console.log("Product: ", product);
-                console.log(getMyProduct.data);
-                setSelectedSize(data.size[0]);
-                setSelectedColor(getMyProduct.color[0]);
+                // console.log(getMyProduct.data);
+                // console.log(getMyProduct.data.color);
+                setSelectedSize(getMyProduct.data.size[0]);
+                setSelectedColor(getMyProduct.data.color[0]);
             } catch (error) {
                 console.error("Error fetching product:", error);
             }
