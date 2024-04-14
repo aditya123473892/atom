@@ -13,7 +13,24 @@ const Cart = () => {
             0
         );
     };
-    const clearCart = () => {
+    const clearCart = async () => {
+        const YOUR_TOKEN = localStorage.getItem("token");
+
+        // const response = await axios.post(
+        //     "http://localhost:8080/api/appuser/emptycart",
+        //     {
+        //         headers: {
+        //             Authorization: `Bearer ${YOUR_TOKEN}`,
+        //         },
+        //     }
+        // );
+        const res = await fetch("http://localhost:8080/api/appuser/emptycart", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${YOUR_TOKEN}`,
+            },
+        });
+        console.log(res);
         setCartItems([]);
     };
 
