@@ -5,6 +5,7 @@ import icon from "../../assets/atom.png";
 import { FaUser, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../ContextProvider/AuthContext";
 import { Avatar } from "@mui/material";
+import axios from "axios";
 const links = [
   { name: "About Us", to: "/aboutus" },
   { name: "Privacy Policy", to: "/privacypolicy" },
@@ -29,6 +30,10 @@ const Navbar = () => {
   useEffect(() => {
     setIsOpen(open);
   }, [open]);
+
+  useEffect(() => {
+    console.log("Login data updated:", logindata);
+  }, [logindata]);
 
   return (
     <motion.nav

@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { createContext, useState, useEffect } from "react";
-
 export const AuthContext = createContext("");
 
 export const AuthProvider = ({ children }) => {
   const [logindata, setLoginData] = useState({});
 
   useEffect(() => {
+    // setLoginData("")
     const checkLoggedIn = async () => {
       try {
         const YOUR_TOKEN = localStorage.getItem("token");
@@ -33,7 +33,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
   useEffect(() => {
     console.log("Updated login data:", logindata);
-  }, [logindata]);
+
+    console.log(logindata);
+  }, []);
 
   return (
     <>
