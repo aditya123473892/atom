@@ -20,42 +20,44 @@ import TermsCondition from "./components/TermsCondition";
 import CodeofConduct from "./components/CodeofConduct";
 import { AuthContext } from "./components/ContextProvider/AuthContext";
 import { AuthProvider } from "./components/ContextProvider/AuthContext";
+import UserProfile from "./components/UserProfile";
 const ScrollToTop = () => {
-    const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-    return null;
+  return null;
 };
 
 const App = () => {
-    return (
-        <AuthProvider>
-            <CartProvider>
-                <Navbar />
-                <ScrollToTop />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/contactus" element={<Contact />} />
-                    <Route path="/explore" element={<Explore />} />
-                    <Route path="/profile" element={<Login />} />
-                    <Route path="/signup" element={<SignupPage />} />
-                    <Route path="/" element={<ExploreSection />} />
-                    <Route path="/product/:id" element={<ProductDetails />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/aboutus" element={<AboutUs />} />
-                    <Route path="/joinus" element={<JoinUs />} />
-                    <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-                    <Route path="/help&support" element={<HelpSupport />} />
-                    <Route path="/T&C" element={<TermsCondition />} />
-                    <Route path="/codeofconduct" element={<CodeofConduct />} />
-                </Routes>
-                <Footer />
-            </CartProvider>
-        </AuthProvider>
-    );
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <Navbar />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contactus" element={<Contact />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/" element={<ExploreSection />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/joinus" element={<JoinUs />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/help&support" element={<HelpSupport />} />
+          <Route path="/T&C" element={<TermsCondition />} />
+          <Route path="/codeofconduct" element={<CodeofConduct />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
+    </AuthProvider>
+  );
 };
 
 export default App;

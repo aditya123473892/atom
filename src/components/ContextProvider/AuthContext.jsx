@@ -7,8 +7,6 @@ export const AuthProvider = ({ children }) => {
   const [logindata, setLoginData] = useState({});
 
   useEffect(() => {
-    console.log(logindata);
-    // setLoginData("");
     const checkLoggedIn = async () => {
       try {
         const YOUR_TOKEN = localStorage.getItem("token");
@@ -23,8 +21,7 @@ export const AuthProvider = ({ children }) => {
           );
           if (user) {
             console.log(user.data.getUser);
-            setLoginData(()=>user.data.getUser);
-            console.log(logindata)
+            setLoginData(() => user.data.getUser);
           }
         }
       } catch (error) {
@@ -34,6 +31,9 @@ export const AuthProvider = ({ children }) => {
 
     checkLoggedIn();
   }, []);
+  useEffect(() => {
+    console.log("Updated login data:", logindata);
+  }, [logindata]);
 
   return (
     <>

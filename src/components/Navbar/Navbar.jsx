@@ -4,7 +4,7 @@ import { motion, useCycle } from "framer-motion";
 import icon from "../../assets/atom.png";
 import { FaUser, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../ContextProvider/AuthContext";
-
+import { Avatar } from "@mui/material";
 const links = [
   { name: "About Us", to: "/aboutus" },
   { name: "Privacy Policy", to: "/privacypolicy" },
@@ -25,10 +25,7 @@ const Navbar = () => {
   const [open, cycleOpen] = useCycle(false, true);
   const [isOpen, setIsOpen] = useState(false);
   const { logindata, setLoginData } = useContext(AuthContext);
-  useEffect(() => {
-    console.log("navbar calling");
-    console.log(logindata)
-  }, []);
+
   useEffect(() => {
     setIsOpen(open);
   }, [open]);
@@ -57,7 +54,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center text-white space-x-4">
         {!logindata ? (
-          <Link to="/profile" className="relative button-link">
+          <Link to="/login" className="relative button-link">
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -67,7 +64,28 @@ const Navbar = () => {
             </motion.div>
           </Link>
         ) : (
-          <p className="text-white">{logindata.email}</p>
+          <Link to="/profile" className="relative button-link">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black"
+            >
+              {logindata.name && (
+                <Avatar
+                  style={{
+                    background: "white",
+                    fontWeight: "bold",
+                    textTransform: "capitalize",
+                    color: "black",
+                  }}
+                >
+                  {logindata.name[0]}
+                </Avatar>
+              )}
+            </motion.div>
+
+            {/* <p className="text-white">{logindata.name}</p> */}
+          </Link>
         )}
 
         <Link to="/cart" className="relative button-link">
