@@ -52,6 +52,7 @@ const SignupPage = () => {
             mobile,
           }
         );
+        
         const storageToken = response.data.token;
         localStorage.setItem("token", storageToken);
         console.log(response);
