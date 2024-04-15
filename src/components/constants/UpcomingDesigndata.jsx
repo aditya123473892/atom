@@ -1,11 +1,11 @@
-import collection1 from "../../assets/collection1.png";
+import collection1 from "../../assets/collection2.png";
 import collection2 from "../../assets/collection2.png";
-import collection3 from "../../assets/collection3.jpg";
-import collection4 from "../../assets/collection4.png";
+import collection3 from "../../assets/collection2.jpg";
+import collection4 from "../../assets/collection2.png";
 
 export const collectionData = [
   {
-    title: "Product 1",
+    title: "Pro",
     image: collection1,
     description: "lorem Lorem ipsum dolor, sit amet consectetur",
     price:"750"

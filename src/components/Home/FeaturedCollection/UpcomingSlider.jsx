@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { collectionData } from "../../constants/HomeCollectionData";
+import { collectionData } from "../../constants/UpcomingDesigndata";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";

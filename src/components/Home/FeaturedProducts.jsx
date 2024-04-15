@@ -9,6 +9,8 @@ import imprintsImage3 from "../../assets/feature22.jpg";
 import frenchTerryImage1 from "../../assets/feature3.jpg";
 import frenchTerryImage2 from "../../assets/feature31.jpg";
 import frenchTerryImage3 from "../../assets/feature32.jpg";
+import frenchTerryImage4 from "../../assets/feature33.jpg";
+import frenchTerryImage5 from "../../assets/feature34.jpg";
 import { FaArrowRight } from "react-icons/fa";
 
 const FeaturedProducts = () => {
@@ -16,7 +18,7 @@ const FeaturedProducts = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 3);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 5);
     }, 3000);
 
     return () => {
@@ -24,9 +26,9 @@ const FeaturedProducts = () => {
     };
   }, []);
 
-  const seamlessImages = [seamlessImage1, seamlessImage2, seamlessImage3];
-  const imprintsImages = [imprintsImage1, imprintsImage2, imprintsImage3];
-  const frenchTerryImages = [frenchTerryImage1, frenchTerryImage2, frenchTerryImage3];
+  const seamlessImages = [seamlessImage1, seamlessImage1, seamlessImage2,seamlessImage3,seamlessImage3];
+  const imprintsImages = [imprintsImage1, imprintsImage2, imprintsImage3,imprintsImage3,imprintsImage2];
+  const frenchTerryImages = [frenchTerryImage1, frenchTerryImage2, frenchTerryImage3, frenchTerryImage4,frenchTerryImage5];
 
   return (
     <section className="flex items-center justify-center w-full overflow-hidden">

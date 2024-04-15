@@ -41,7 +41,7 @@ export const Home = () => {
       <Collections />
       <Offer />
       <UpcomingDesign />
-      <Categories />
+      
     </>
   );
 };

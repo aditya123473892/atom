@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionSlider from "./CollectionSlider";
+import CollectionSlider from "./UpcomingSlider";
 const UpcomingDesign = () => {
   return (
     <section className="gap-10 text-black">

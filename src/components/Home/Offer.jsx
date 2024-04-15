@@ -4,11 +4,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Offer1 from "../../assets/offer1.jpg"
+import Offer1 from "../../assets/offers.jpg"
+import Offer2 from "../../assets/offers2.jpg"
 
 const OfferCarousel = () => {
   const offerImages = [
-    Offer1
+    Offer1,
+    Offer2
   ];
 
   return (
