@@ -9,6 +9,10 @@ module.exports = {
       backgroundImage: {
         Hero: "url('assets/home3.jpg')",
       },
+      fontFamily: {
+        heading: ['font1', 'sans'],
+        base: ['font2', 'sans'],
+      },
     },
   },
   plugins: [],

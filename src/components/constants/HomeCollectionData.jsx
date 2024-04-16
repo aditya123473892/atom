@@ -1,7 +1,7 @@
-import collection1 from "../../assets/collection1.jpg";
-import collection2 from "../../assets/collection2.jpg";
+import collection1 from "../../assets/collection1.png";
+import collection2 from "../../assets/collection2.png";
 import collection3 from "../../assets/collection3.jpg";
-import collection4 from "../../assets/collection4.jpg";
+import collection4 from "../../assets/collection4.png";
 
 export const collectionData = [
   {
