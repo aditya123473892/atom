@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { motion, useCycle } from 'framer-motion';
 import icon from '../../assets/new_logo.png';
 import { FaUser, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
-
+import { AuthContext } from "../ContextProvider/AuthContext";
+import { Avatar } from "@mui/material";
+import axios from "axios";
 const links = [
   { name: "About Us", to: "/aboutus" },
   { name: "Privacy Policy", to: "/privacypolicy" },
@@ -23,10 +25,15 @@ const sideVariants = {
 const Navbar = () => {
   const [open, cycleOpen] = useCycle(false, true);
   const [isOpen, setIsOpen] = useState(false);
+  const { logindata, setLoginData } = useContext(AuthContext);
 
   useEffect(() => {
     setIsOpen(open);
   }, [open]);
+
+  useEffect(() => {
+    console.log("Login data updated:", logindata);
+  }, [logindata]);
 
   return (
     <motion.nav
@@ -45,15 +52,41 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex items-center text-white space-x-4">
-        <Link to="/profile" className="relative button-link">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-black"
-          >
-            <FaUser className="text-xl" />
-          </motion.div>
-        </Link>
+        {!logindata ? (
+          <Link to="/login" className="relative button-link">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black"
+            >
+              <FaUser className="text-xl" />
+            </motion.div>
+          </Link>
+        ) : (
+          <Link to="/profile" className="relative button-link">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black"
+            >
+              {logindata.name && (
+                <Avatar
+                  style={{
+                    background: "white",
+                    fontWeight: "bold",
+                    textTransform: "capitalize",
+                    color: "black",
+                  }}
+                >
+                  {logindata.name[0]}
+                </Avatar>
+              )}
+            </motion.div>
+
+            {/* <p className="text-white">{logindata.name}</p> */}
+          </Link>
+        )}
+
         <Link to="/cart" className="relative button-link">
           <motion.div
             whileHover={{ scale: 1.1 }}
