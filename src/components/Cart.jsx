@@ -49,6 +49,33 @@ const Cart = () => {
             updateQuantity(itemId, quantity);
         }
     };
+
+    const incrementQuantity = async () => {
+        const res = await fetch(
+            "http://localhost:8080/api/appuser/incquantity",
+            {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${YOUR_TOKEN}`,
+                },
+            }
+        );
+        console.log(res);
+    };
+
+    const decrementQuantity = async () => {
+        const res = await fetch(
+            "http://localhost:8080/api/appuser/decquantity",
+            {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${YOUR_TOKEN}`,
+                },
+            }
+        );
+        console.log(res);
+    };
+
     useEffect(() => {
         // setLoginData("")
         const fetchCartItems = async () => {
@@ -137,12 +164,13 @@ const Cart = () => {
                                             <div className="flex items-center mt-2">
                                                 <button
                                                     className="text-gray-400 hover:text-gray-200 focus:outline-none"
-                                                    onClick={() =>
-                                                        handleQuantityChange(
-                                                            item.id,
-                                                            item.quantity - 1
-                                                        )
-                                                    }
+                                                    // onClick={() =>
+                                                    //     handleQuantityChange(
+                                                    //         item.id,
+                                                    //         item.quantity - 1
+                                                    //     )
+                                                    // }
+                                                    onClick={decrementQuantity}
                                                 >
                                                     <FaMinus className="w-4 h-4" />
                                                 </button>
@@ -151,12 +179,13 @@ const Cart = () => {
                                                 </span>
                                                 <button
                                                     className="text-gray-400 hover:text-gray-200 focus:outline-none"
-                                                    onClick={() =>
-                                                        handleQuantityChange(
-                                                            item.id,
-                                                            item.quantity + 1
-                                                        )
-                                                    }
+                                                    // onClick={() =>
+                                                    //     handleQuantityChange(
+                                                    //         item.id,
+                                                    //         item.quantity + 1
+                                                    //     )
+                                                    // }
+                                                    onClick={incrementQuantity}
                                                 >
                                                     <FaPlus className="w-4 h-4" />
                                                 </button>
