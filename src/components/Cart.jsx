@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
     // const { cartItems, removeFromCart, clearCart, updateQuantity } =
@@ -13,7 +15,24 @@ const Cart = () => {
             0
         );
     };
-    const clearCart = () => {
+    const clearCart = async () => {
+        const YOUR_TOKEN = localStorage.getItem("token");
+
+        // const response = await axios.post(
+        //     "http://localhost:8080/api/appuser/emptycart",
+        //     {
+        //         headers: {
+        //             Authorization: `Bearer ${YOUR_TOKEN}`,
+        //         },
+        //     }
+        // );
+        const res = await fetch("http://localhost:8080/api/appuser/emptycart", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${YOUR_TOKEN}`,
+            },
+        });
+        console.log(res);
         setCartItems([]);
     };
 
@@ -48,8 +67,8 @@ const Cart = () => {
                         // console.log("Cart USER: ", myCart);
                         setCartItems(myCart.data.cartItems);
                         // console.log(myCart.data.cartItems);
-                        console.log("CART ITEMS: ", cartItems);
                     }
+                    console.log("CART ITEMS: ", cartItems);
                 }
             } catch (error) {
                 console.log("Error fetching user:", error);
@@ -128,7 +147,7 @@ const Cart = () => {
                                                     <FaMinus className="w-4 h-4" />
                                                 </button>
                                                 <span className="mx-2 text-lg">
-                                                    {item.quantity}
+                                                    {item.productId.quantity}
                                                 </span>
                                                 <button
                                                     className="text-gray-400 hover:text-gray-200 focus:outline-none"

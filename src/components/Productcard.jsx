@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "./CartContext";
 import { FaCheck } from "react-icons/fa";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "./ContextProvider/AuthContext";
+
 axios.defaults.withCredentials = true;
+
 const ProductCard = ({ product, id }) => {
     const navigate = useNavigate();
     const { addToCart } = useContext(CartContext);
@@ -32,7 +36,19 @@ const ProductCard = ({ product, id }) => {
                     },
                 }
             );
-            console.log(res);
+            const message = res.data.message;
+            if (message === "Product already exists in the cart") {
+                // toast.warning(message, {
+                //     position: "top-center",
+                //     autoClose: 2000,
+                // });
+                alert(message);
+            } else {
+                setIsAdded(true);
+                setTimeout(() => {
+                    setIsAdded(false);
+                }, 1500);
+            }
             // setLoginData(res.data)
         } catch (error) {
             console.log(error);
@@ -45,10 +61,6 @@ const ProductCard = ({ product, id }) => {
         //   quantity: 1,
         // };
         // addToCart(cartItem);
-        setIsAdded(true);
-        setTimeout(() => {
-            setIsAdded(false);
-        }, 1500);
     };
 
     return (
@@ -56,6 +68,7 @@ const ProductCard = ({ product, id }) => {
             className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
             onClick={handleClick}
         >
+            <ToastContainer />
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <div className="relative pt-[100%]">
                     <img
